@@ -6,7 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create a file
-        uses: wp-php/ssh-action@master
         with:
           host: 192.168.2.10
           username: vivo
