@@ -12,4 +12,4 @@ jobs:
     steps:
       - name: Deploy to VM
         run: |
-          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} vivo@192.168.219.110 "cd /home/anilmasapeta/wp-anil && git pull"
+          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} vivo@101.188.67.134 "cd /home/anilmasapeta/wp-anil && git pull"
