@@ -1,27 +1,16 @@
-name: Deploy to Remote Server
-
-on:
-  push:
-    branches:
-      - master
-
+name: remote ssh command
+on: [push]
 jobs:
-  deploy:
+
+  build:
+    name: Build
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: SSH into remote server and run command
-        uses: appleboy/ssh-action@master
-        with:
-          host: 192.168.2.10
-          username: vivo
-          key: ${{ secrets.KEY }}
-          port: 22
-          script: |
-            cd /home/anilmasapeta/wp-anil
-            touch file23
-           
-           
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: 192.168.2.10
+        username: vivo
+        password: vivo
+        port: 22
+        script: ls -la
