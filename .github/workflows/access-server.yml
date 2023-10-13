@@ -11,6 +11,6 @@ jobs:
           host: 192.168.2.10
           username: vivo
           key: ${{ secrets.KEY }}
-          script: echo hello world > hello.txt
+          script: touch /home/anilmasapeta/hello.txt
           
   
