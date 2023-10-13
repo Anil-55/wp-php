@@ -1,16 +1,15 @@
-name: Access server
-on: push
+name: Deploy to VM
+
+on:
+  push:
+    branches:
+      - master  # Change this to your main branch
+
 jobs:
-  access_server:
-    name: Access server
-    runs-on: ubuntu-latest
+  deploy:
+    runs-on: ubuntu-latest  # You can use a different OS if necessary
+
     steps:
-      - name: Create a file
-        uses: appleboy/ssh-action@master
-        with:
-          host: 192.168.2.10
-          username: vivo
-          key: ${{ secrets.KEY }}
-          script: whoami
-          
-  
+      - name: Deploy to VM
+        run: |
+          ssh -o StrictHostKeyChecking=no -i ${{ secrets.PRIVATE_KEY }} vivo@192.168.2.10 "cd /home/anilmasapeta/wp-anil && git pull"
