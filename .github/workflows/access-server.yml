@@ -1,16 +1,16 @@
-name: Deploy to VM
-
-on:
-  push:
-    branches:
-      - master  # Change this to your main branch
-
+name: Access server
+on: push
 jobs:
-  deploy:
-    runs-on: ubuntu-latest  # You can use a different OS if necessary
-
+  access_server:
+    name: Access server
+    runs-on: ubuntu-latest
     steps:
-      - name: Deploy to VM
-        run: |
-          ssh -o StrictHostKeyChecking=no -i ${{ secrets.KEY }} vivo@192.168.2.10 "touch /home/anilmasapeta/wp-php.txt"
-        
+      - name: Create a file
+        uses: appleboy/ssh-action@master
+        with:
+          host: 192.168.2.10
+          username: vivo
+          key: ${{ secrets.KEY }}
+          script: echo hello world > hello.txt
+          
+  
